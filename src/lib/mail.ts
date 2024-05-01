@@ -6,7 +6,7 @@ export const sendVerificationEmail = async (email: string, token: string) => {
   const confirmLink = `${process.env.NEXTAUTH_URL}/auth/verify-email?token=${token}`;
 
   const { data, error } = await resend.emails.send({
-    from: "onboarding@resend.dev",
+    from: "mail@highcold.io",
     to: email,
     subject: "Confirm your email",
     html: `
@@ -21,7 +21,7 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
   const resetLink = `${process.env.NEXTAUTURL}/auth/reset-password?token=${token}`;
 
   const { data, error } = await resend.emails.send({
-    from: "onboarding@resend.dev",
+    from: "mail@highcold.io",
     to: email,
     subject: "Reset your password",
     html: `
@@ -34,7 +34,7 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
 
 export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
   const { data, error } = await resend.emails.send({
-    from: "onboarding@resend.dev",
+    from: "mail@highcold.io",
     to: email,
     subject: "Two-factor authentication",
     html: `
@@ -43,6 +43,6 @@ export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
         <h2>${token}</h2>
       `,
   });
-  console.log("response from the two-factor action: ", data);
-  console.log("error from the two-factor action: ", error);
+  // console.log("response from the two-factor action: ", data);
+  // console.log("error from the two-factor action: ", error);
 };
